@@ -1,0 +1,57 @@
+[
+  {
+    "model": "profiles.sport",
+    "pk": 1,
+    "fields": {
+      "nom_sport": "Football",
+      "is_active": true,
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "profiles.sport",
+    "pk": 2,
+    "fields": {
+      "nom_sport": "Basketball",
+      "is_active": false,
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "profiles.sport",
+    "pk": 3,
+    "fields": {
+      "nom_sport": "Handball",
+      "is_active": false,
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "profiles.sport",
+    "pk": 4,
+    "fields": {
+      "nom_sport": "Athletisme",
+      "is_active": false,
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {"model": "profiles.position", "pk": 1,  "fields": {"sport": 1, "categorie": "Gardien",  "nom_poste": "Gardien de but",    "code_poste": "GK"}},
+
+  {"model": "profiles.position", "pk": 2,  "fields": {"sport": 1, "categorie": "Defense",   "nom_poste": "Defenseur Central", "code_poste": "DC"}},
+  {"model": "profiles.position", "pk": 3,  "fields": {"sport": 1, "categorie": "Defense",   "nom_poste": "Lateral Droit",     "code_poste": "RB"}},
+  {"model": "profiles.position", "pk": 4,  "fields": {"sport": 1, "categorie": "Defense",   "nom_poste": "Lateral Gauche",    "code_poste": "LB"}},
+  {"model": "profiles.position", "pk": 5,  "fields": {"sport": 1, "categorie": "Defense",   "nom_poste": "Libero",            "code_poste": "SW"}},
+
+  {"model": "profiles.position", "pk": 6,  "fields": {"sport": 1, "categorie": "Milieu",    "nom_poste": "Milieu Defensif",   "code_poste": "CDM"}},
+  {"model": "profiles.position", "pk": 7,  "fields": {"sport": 1, "categorie": "Milieu",    "nom_poste": "Milieu Central",    "code_poste": "CM"}},
+  {"model": "profiles.position", "pk": 8,  "fields": {"sport": 1, "categorie": "Milieu",    "nom_poste": "Milieu Offensif",   "code_poste": "CAM"}},
+  {"model": "profiles.position", "pk": 9,  "fields": {"sport": 1, "categorie": "Milieu",    "nom_poste": "Milieu Droit",      "code_poste": "RM"}},
+  {"model": "profiles.position", "pk": 10, "fields": {"sport": 1, "categorie": "Milieu",    "nom_poste": "Milieu Gauche",     "code_poste": "LM"}},
+
+  {"model": "profiles.position", "pk": 11, "fields": {"sport": 1, "categorie": "Attaque",   "nom_poste": "Ailier Droit",      "code_poste": "RW"}},
+  {"model": "profiles.position", "pk": 12, "fields": {"sport": 1, "categorie": "Attaque",   "nom_poste": "Ailier Gauche",     "code_poste": "LW"}},
+  {"model": "profiles.position", "pk": 13, "fields": {"sport": 1, "categorie": "Attaque",   "nom_poste": "Avant-centre",      "code_poste": "ST"}},
+  {"model": "profiles.position", "pk": 14, "fields": {"sport": 1, "categorie": "Attaque",   "nom_poste": "Second Attaquant",  "code_poste": "SS"}},
+  {"model": "profiles.position", "pk": 15, "fields": {"sport": 1, "categorie": "Attaque",   "nom_poste": "Attaquant de Pointe","code_poste": "CF"}}
+]
