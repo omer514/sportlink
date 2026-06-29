@@ -8,6 +8,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import JsonResponse
+
+def health_check(request):
+    return JsonResponse({'status': 'ok'})
 
 urlpatterns = [
     # Panneau d'administration Django
@@ -20,6 +24,7 @@ urlpatterns = [
     path('api/',       include('profiles.urls')),   # /api/profiles/, /api/sports/, etc.
     path('api/',       include('media_files.urls')),      # /api/profiles/<slug>/media/
     path('api/',       include('feed.urls')),       # /api/feed/
+    path('health/', health_check),  # ← ajoute cette ligne
 ]
 
 # En développement : sert les fichiers média uploadés localement
