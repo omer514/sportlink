@@ -7,6 +7,9 @@ from pathlib import Path
 from decouple import config       # Lit les variables du fichier .env
 from datetime import timedelta    # Pour définir la durée des tokens JWT
 
+import os
+import dj_database_url
+
 # Chemin de base du projet (le dossier sportlink/)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,12 +57,14 @@ MIDDLEWARE = [
     # CORS doit être en premier pour intercepter les requêtes Flutter
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← ajoute cette ligne juste après SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 # Fichier qui contient toutes les URLs du projet
@@ -91,10 +96,10 @@ WSGI_APPLICATION = 'sportlink_backend.wsgi.application'
 # SQLite pour le développement local — simple, pas besoin d'installation
 # On passera à PostgreSQL quand on déploie en ligne
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',   # Fichier créé automatiquement
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
 
 
@@ -160,7 +165,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # ── FICHIERS STATIQUES ET MÉDIAS ─────────────────────────────
-STATIC_URL = '/static/'    # URL pour les fichiers CSS, JS, images statiques
 MEDIA_URL  = '/media/'     # URL pour les fichiers uploadés par les utilisateurs
 MEDIA_ROOT = BASE_DIR / 'media_files'   # Dossier local (utilisé si pas Cloudinary)
 
@@ -176,3 +180,7 @@ USE_TZ        = True                    # Dates stockées en UTC dans la BDD
 # Type de clé primaire par défaut pour tous les modèles
 # BigAutoField = entier 64 bits, évite les dépassements à grande échelle
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

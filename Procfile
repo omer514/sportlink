@@ -1,0 +1,1 @@
+web: gunicorn sportlink_backend.wsgi --log-file -
