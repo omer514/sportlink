@@ -18,7 +18,7 @@ urlpatterns = [
     # Toutes les routes API commencent par /api/
     path('api/auth/',  include('accounts.urls')),   # /api/auth/register/, login/, etc.
     path('api/',       include('profiles.urls')),   # /api/profiles/, /api/sports/, etc.
-    path('api/',       include('media.urls')),      # /api/profiles/<slug>/media/
+    path('api/',       include('media_files.urls')),      # /api/profiles/<slug>/media/
     path('api/',       include('feed.urls')),       # /api/feed/
 ]
 
