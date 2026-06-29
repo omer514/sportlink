@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     # Nos applications SportLink (créées à l'étape 6)
     'accounts',    # Inscription, connexion, gestion des utilisateurs
     'profiles',    # Profils joueurs et recruteurs
-    'media',       # Photos et vidéos
+    'media_files',       # Photos et vidéos
     'feed',        # Feed de découverte style TikTok
 ]
 
@@ -165,7 +165,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # ── FICHIERS STATIQUES ET MÉDIAS ─────────────────────────────
-MEDIA_URL  = '/media/'     # URL pour les fichiers uploadés par les utilisateurs
+MEDIA_URL  = '/media_files/'     # URL pour les fichiers uploadés par les utilisateurs
 MEDIA_ROOT = BASE_DIR / 'media_files'   # Dossier local (utilisé si pas Cloudinary)
 
 
