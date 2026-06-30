@@ -348,3 +348,31 @@ class ProfilePublishView(APIView):
         }, status=status.HTTP_200_OK)
         
         
+# ── MON PROFIL (UTILISATEUR CONNECTÉ) ─────────────────────────
+class MyProfileView(APIView):
+    """
+    Endpoint : GET /api/profiles/me/
+    Retourne le profil de l'utilisateur connecté.
+    Si l'utilisateur n'a pas encore de profil, retourne 404
+    avec un message explicite (Flutter affichera un écran
+    "créer mon profil" dans ce cas).
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        # Vérifie que l'utilisateur a bien un profil lié
+        if not hasattr(request.user, 'profile'):
+            return Response({
+                'error': 'Vous n\'avez pas encore créé de profil.',
+                'has_profile': False,
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        profile = request.user.profile
+        serializer = ProfileReadSerializer(
+            profile,
+            context={'request': request}
+        )
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        

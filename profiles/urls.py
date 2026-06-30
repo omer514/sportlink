@@ -5,7 +5,7 @@
 from django.urls import path
 from .views import (
     SportListView, PositionListView,
-    ProfileListCreateView, ProfileDetailView, ProfilePublishView
+    ProfileListCreateView, ProfileDetailView, ProfilePublishView,MyProfileView
 )
 
 urlpatterns = [
@@ -19,8 +19,10 @@ urlpatterns = [
     # POST — Créer son profil joueur
     path('profiles/', ProfileListCreateView.as_view(), name='profile-list-create'),
 
+
     # GET   — Profil public d'un joueur par son slug
     # PATCH — Modifier son profil
+    path('profiles/me/', MyProfileView.as_view(), name='my-profile'),
     path('profiles/<slug:slug>/', ProfileDetailView.as_view(), name='profile-detail'),
 
     # POST — Publier son profil
